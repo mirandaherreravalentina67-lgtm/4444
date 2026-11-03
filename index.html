@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102d50">
+<title>Valentina & Abrahan | Nuestro pequeño universo</title>
+
+<style>
+:root{
+  --azul:#8ecbfa;
+  --azul-claro:#d9efff;
+  --azul-oscuro:#102d50;
+  --plata:#dce8f2;
+  --texto:#eaf5ff;
+  --panel:rgba(12,39,69,.68);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--texto);
+  font-family:Georgia,"Times New Roman",serif;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(116,190,244,.22),transparent 30%),
+    radial-gradient(circle at 85% 45%,rgba(210,228,244,.13),transparent 28%),
+    linear-gradient(145deg,#07182d,#12385d 52%,#091c34);
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background-image:radial-gradient(#fff 1px,transparent 1.5px);
+  background-size:75px 75px;
+  opacity:.18;
+  animation:twinkle 5s ease-in-out infinite alternate;
+}
+@keyframes twinkle{
+  from{opacity:.08}
+  to{opacity:.25}
+}
+main,header,footer{position:relative;z-index:1}
+header{
+  min-height:90vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:70px 20px 45px;
+}
+.eyebrow{
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#c9e6ff;
+  font-size:.78rem;
+}
+h1,h2,h3{font-weight:normal}
+header h1{
+  font-size:clamp(2.6rem,9vw,5.4rem);
+  margin:18px 0 8px;
+  color:#f4faff;
+  text-shadow:0 0 20px rgba(190,224,255,.55);
+}
+header .subtitle{
+  font-size:1.15rem;
+  color:#d7eaff;
+}
+header .dedication{
+  margin-top:12px;
+  line-height:1.8;
+}
+button,.button{
+  border:1px solid rgba(232,245,255,.8);
+  border-radius:30px;
+  padding:13px 24px;
+  background:linear-gradient(135deg,#d9efff,#8bbde5);
+  color:#102d50;
+  font:inherit;
+  font-weight:bold;
+  text-decoration:none;
+  cursor:pointer;
+  box-shadow:0 5px 24px rgba(133,194,239,.22);
+  transition:transform .25s,box-shadow .25s;
+}
+button:hover,.button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 28px rgba(170,218,255,.35);
+}
+section{
+  width:min(900px,92%);
+  margin:0 auto;
+  padding:48px 0;
+}
+.section-title{
+  text-align:center;
+  font-size:clamp(1.8rem,6vw,2.5rem);
+  color:#e8f5ff;
+  margin:0 0 12px;
+}
+.quote{
+  text-align:center;
+  color:#c9e4fa;
+  font-style:italic;
+  line-height:1.9;
+  max-width:720px;
+  margin:0 auto 25px;
+}
+.panel{
+  background:var(--panel);
+  border:1px solid rgba(215,235,250,.35);
+  border-radius:22px;
+  padding:28px;
+  box-shadow:0 12px 38px rgba(0,0,0,.2);
+  backdrop-filter:blur(8px);
+}
+p{line-height:1.9}
+.welcome-copy{text-align:center}
+.welcome-copy p{margin:14px 0}
+.signature{
+  color:#d9efff;
+  font-style:italic;
+}
+.music-panel{
+  text-align:center;
+  margin:0 auto;
+  max-width:760px;
+}
+.music-panel iframe{
+  display:block;
+  width:100%;
+  height:220px;
+  border:0;
+  border-radius:15px;
+  margin:20px auto 12px;
+}
+.music-link{color:#d9efff}
+.counter-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin:25px 0;
+}
+.counter-box{
+  padding:18px 8px;
+  text-align:center;
+  border-radius:16px;
+  background:rgba(219,239,255,.1);
+  border:1px solid rgba(219,239,255,.3);
+}
+.counter-box strong{
+  display:block;
+  font-size:clamp(1.5rem,5vw,2.4rem);
+  color:#fff;
+}
+.counter-box span{
+  font-size:.85rem;
+  color:#c9e4fa;
+}
+.envelope-wrap{text-align:center}
+.envelope{
+  position:relative;
+  width:min(310px,80vw);
+  height:190px;
+  margin:30px auto;
+  border:1px solid #d7eaff;
+  border-radius:8px;
+  background:linear-gradient(145deg,#cfe8fa,#8db9dc);
+  box-shadow:0 12px 35px rgba(0,0,0,.3);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#173957;
+}
+.envelope:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(35deg,transparent 49%,rgba(42,91,130,.24) 50%,transparent 51%),
+    linear-gradient(-35deg,transparent 49%,rgba(42,91,130,.24) 50%,transparent 51%);
+  border-radius:8px;
+}
+.envelope span{
+  position:relative;
+  font-size:2.5rem;
+}
+.letter{
+  display:none;
+  text-align:left;
+  margin-top:20px;
+  animation:appear .7s ease;
+}
+.letter.show{display:block}
+.letter p{margin:13px 0}
+.emotional-question{
+  text-align:center;
+  font-size:1.25rem;
+  color:#fff;
+  font-style:italic;
+}
+@keyframes appear{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.promise-list{
+  display:grid;
+  gap:15px;
+}
+.promise{
+  padding:20px;
+  border-left:3px solid #c9e4fa;
+  background:rgba(219,239,255,.08);
+  border-radius:0 14px 14px 0;
+  font-style:italic;
+  line-height:1.8;
+}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  margin-top:28px;
+}
+.photo-card{
+  margin:0;
+  padding:9px;
+  background:rgba(230,243,255,.12);
+  border:1px solid rgba(230,243,255,.35);
+  border-radius:15px;
+  overflow:hidden;
+}
+.photo-card img{
+  display:block;
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-radius:10px;
+  background:rgba(255,255,255,.08);
+}
+.photo-card figcaption{
+  text-align:center;
+  padding:11px 5px 4px;
+  color:#e7f4ff;
+  letter-spacing:1px;
+}
+.reason-box,.surprise-box{
+  display:none;
+  margin-top:22px;
+  text-align:left;
+  animation:appear .7s ease;
+}
+.reason-box.show,.surprise-box.show{display:block}
+.reason-box p,.surprise-box p{margin:12px 0}
+.center{text-align:center}
+.future-copy{text-align:center}
+.final{
+  text-align:center;
+  padding:70px 20px 85px;
+}
+.final h2{
+  font-size:clamp(3rem,12vw,6rem);
+  margin:10px 0;
+  color:#f4faff;
+  text-shadow:0 0 25px rgba(196,226,255,.65);
+}
+.final h3{
+  font-size:1.6rem;
+  color:#cce7ff;
+  letter-spacing:4px;
+}
+footer{
+  text-align:center;
+  padding:22px;
+  color:#c4dced;
+  font-size:.9rem;
+}
+.back-top{
+  display:inline-block;
+  margin-top:20px;
+  color:#e5f3ff;
+}
+.petal{
+  position:fixed;
+  top:-30px;
+  z-index:5;
+  pointer-events:none;
+  color:#d8eaff;
+  opacity:.7;
+  animation:fall linear forwards;
+}
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(420deg);
+    opacity:0;
+  }
+}
+.spark{
+  position:fixed;
+  z-index:10;
+  pointer-events:none;
+  color:#fff;
+  font-size:17px;
+  animation:sparkle .8s ease-out forwards;
+  text-shadow:0 0 10px #bfe4ff;
+}
+@keyframes sparkle{
+  to{
+    transform:translateY(-24px) scale(1.8);
+    opacity:0;
+  }
+}
+@media(max-width:560px){
+  section{padding:36px 0}
+  .panel{padding:21px}
+  .counter-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery{grid-template-columns:1fr}
+  .photo-card img{height:290px}
+  header{min-height:78vh}
+}
+</style>
+</head>
+
+<body>
+
+<header id="inicio">
+  <div class="eyebrow">Un regalo hecho con amor</div>
+  <h1>Valentina &amp; Abrahan</h1>
+  <div class="subtitle">Este hermoso regalo es para</div>
+  <h2>Abrahan 🩵</h2>
+  <p class="dedication">
+    De Valentina<br>
+    Espero que te guste, mi amor. Lo hice con mucho amor para ti. 🩵
+  </p>
+  <a class="button" href="#bienvenida">Descubre nuestro universo ✨</a>
+</header>
+
+<main>
+
+<!-- NUESTRA CANCIÓN -->
+<section id="musica">
+  <div class="panel music-panel">
+    <h2 class="section-title">Nuestra canción 🎶</h2>
+
+    <p class="quote">
+      «Hay canciones que no necesitan explicar nada, porque desde que las escucho me recuerdan a ti, a nosotros y a todo lo bonito que todavía sueño vivir contigo».
+    </p>
+
+    <iframe
+      src="https://www.youtube.com/embed/HHjCYxp07aY"
+      title="Nuestra canción"
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+
+    <p>
+      <a class="music-link"
+         href="https://youtu.be/HHjCYxp07aY?si=XMbdc6x-lDKErptZ"
+         target="_blank"
+         rel="noopener">
+        Escuchar nuestra canción
+      </a>
+    </p>
+
+    <p class="quote">
+      Puedes darle play y dejar que nuestra canción te acompañe mientras recorres este pequeño universo. 🩵
+    </p>
+  </div>
+</section>
+
+<!-- BIENVENIDA -->
+<section id="bienvenida">
+  <div class="panel welcome-copy">
+    <h2 class="section-title">Bienvenido a nuestro pequeño universo 🩵</h2>
+
+    <p>
+      Mi amor, si estás leyendo esto, quiero que por un momento dejes a un lado todo lo que te preocupa y recuerdes algo: eres profundamente amado.
+    </p>
+
+    <p>
+      Quizás hoy no estemos viviendo nuestra mejor etapa, quizás existan días difíciles, dudas o momentos en los que todo parezca ir más lento de lo que soñamos. Pero nuestra historia no se resume en los días difíciles. También está hecha de amor, de esperanza, de fe y de todas esas razones por las que seguimos creyendo en lo que un día soñamos juntos.
+    </p>
+
+    <p>
+      Yo no sé cuándo cambiarán las cosas, pero tengo fe en Dios y en que todavía nos esperan momentos hermosos. Mientras tanto, quería regalarte algo diferente: un pedacito de mi corazón convertido en esta página, para que puedas volver aquí y recordar lo mucho que significas para mí.
+    </p>
+
+    <p>Bienvenido a nuestro pequeño universo motito.</p>
+
+    <p>
+      Todo lo que encontrarás aquí lo preparé pensando en ti, con amor, ilusión y el deseo de verte sonreír.
+    </p>
+
+    <p class="signature">Con amor, tu Negrita.</p>
+  </div>
+</section>
+
+<!-- CONTADOR -->
+<section id="tiempo">
+  <div class="panel">
+    <h2 class="section-title">Nuestro tiempo juntos</h2>
+
+    <p class="quote">Desde el 2 de febrero de 2025</p>
+
+    <div class="counter-grid">
+      <div class="counter-box">
+        <strong id="days">0</strong>
+        <span>Días</span>
+      </div>
+
+      <div class="counter-box">
+        <strong id="hours">0</strong>
+        <span>Horas</span>
+      </div>
+
+      <div class="counter-box">
+        <strong id="minutes">0</strong>
+        <span>Minutos</span>
+      </div>
+
+      <div class="counter-box">
+        <strong id="seconds">0</strong>
+        <span>Segundos</span>
+      </div>
+    </div>
+
+    <p class="quote">
+      Cada segundo a tu lado forma parte de una historia que todavía quiero seguir escribiendo contigo.
+    </p>
+  </div>
+</section>
+
+<!-- CARTA -->
+<section id="carta">
+  <div class="panel envelope-wrap">
+    <h2 class="section-title">Un mensaje para ti 💌</h2>
+
+    <p class="quote">Toca el sobre para descubrir tu carta.</p>
+
+    <div
+      class="envelope"
+      role="button"
+      tabindex="0"
+      aria-label="Abrir la carta"
+      onclick="openLetter()"
+      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLetter()}">
+
+      <span>💌</span>
+    </div>
+
+    <div class="letter panel" id="letter">
+      <h3 class="center">Para mi amor</h3>
+
+      <p>
+        Hoy celebramos todo lo que hemos vivido, pero, sobre todo, todo lo que aún nos queda por vivir.
+      </p>
+
+      <p>
+        Porque si llegar hasta aquí ha sido tan bonito, no puedo imaginar lo increíble que será seguir escribiendo esta historia a tu lado.
+      </p>
+
+      <p class="emotional-question">
+        ¿Te gustaría seguir escribiendo nuestra historia?
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PROMESAS -->
+<section id="promesas">
+  <div class="panel">
+    <h2 class="section-title">Pequeñas promesas 🩵</h2>
+
+    <div class="promise-list">
+
+      <div class="promise">
+        «Si algún día el camino se hace difícil, recuerda que no tienes que recorrerlo sintiéndote solo».
+      </div>
+
+      <div class="promise">
+        «Quiero seguir coleccionando momentos contigo, incluso los más pequeños, porque contigo también quiero quedarme en lo cotidiano».
+      </div>
+
+      <div class="promise">
+        «No sé todo lo que nos espera, pero todavía tengo ilusión por descubrirlo contigo».
+      </div>
+
+      <div class="promise center">
+        Mateo 19:6 🩵
+      </div>
+
+      <div class="promise">
+        Nunca tendrás que enfrentar tus días difíciles sintiéndote solo. Adonde quieras que vayas, deseo acompañarte; si corres, correré a tu lado; si luchas, estaré contigo.
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA DE FOTOS -->
+<section id="galeria">
+  <div class="panel">
+    <h2 class="section-title">Nuestra galería de recuerdos 📸</h2>
+
+    <p class="quote">
+      «Cada fotografía guarda un pedacito de nuestra historia, momentos que mi corazón quisiera volver a vivir una y mil veces».
+    </p>
+
+    <div class="gallery">
+
+      <figure class="photo-card">
+        <img src="Foto 1.jpg" alt="Foto 1">
+        <figcaption>Foto 1</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <img src="Foto 10.jpg" alt="Foto 10">
+        <figcaption>Foto 10</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <img src="Foto 3.jpg" alt="Foto 3">
+        <figcaption>Foto 3</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <img src="Foto 4.jpg" alt="Foto 4">
+        <figcaption>Foto 4</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <img src="Foto 5.jpg" alt="Foto 5">
+        <figcaption>Foto 5</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <img src="Foto 6.jpg" alt="Foto 6">
+        <figcaption>Foto 6</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <img src="Foto 7.jpg" alt="Foto 7">
+        <figcaption>Foto 7</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <img src="Foto 8.jpg" alt="Foto 8">
+        <figcaption>Foto 8</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <img src="Foto 9.jpg" alt="Foto 9">
+        <figcaption>Foto 9</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <img src="Foto2.jpg" alt="Foto 2">
+        <figcaption>Foto 2</figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ TE AMO -->
+<section id="razones">
+  <div class="panel center">
+    <h2 class="section-title">¿Por qué te amo? 🩵</h2>
+
+    <p class="quote">
+      Hay muchas razones que viven en mi corazón. Toca el botón para descubrir algunas.
+    </p>
+
+    <button type="button" onclick="toggleBox('reasons')">
+      Descubre por qué te amo ✨
+    </button>
+
+    <div class="reason-box" id="reasons">
+
+      <p>
+        Te amo porque eres tú, porque incluso con tus imperfecciones tienes una manera única de hacerte especial en mi vida.
+      </p>
+
+      <p>
+        Te amo por tu forma de ser, por los momentos que hemos compartido, por las sonrisas que me has regalado y por cada recuerdo que se ha quedado guardado en mi corazón.
+      </p>
+
+      <p>
+        Te amo porque no necesito que todo sea perfecto para elegirte. Porque quiero conocerte en todas tus versiones, acompañarte en tus días buenos y también en aquellos en los que todo parece difícil.
+      </p>
+
+      <p>
+        Te amo porque, entre tantas personas en el mundo, mi corazón encontró en ti a alguien con quien quiere seguir escribiendo una historia.
+      </p>
+
+      <p>
+        Y si algún día me preguntas por qué te sigo eligiendo, mi respuesta será sencilla: porque eres tú, mi amor, y porque todavía tengo muchos sueños que quiero cumplir a tu lado. 🩵
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- SORPRESA -->
+<section id="sorpresa">
+  <div class="panel center">
+    <h2 class="section-title">Una pequeña sorpresa 🎁</h2>
+
+    <p class="quote">Hay algo que nunca quiero que olvides, mi amor...</p>
+
+    <button type="button" onclick="toggleBox('surprise')">
+      Toca para descubrirlo 💙
+    </button>
+
+    <div class="surprise-box" id="surprise">
+
+      <p>
+        Nunca dudes de lo importante que eres para mí. No importa cuántos días difíciles lleguen, ni cuántas cosas tengamos que enfrentar: tu lugar en mi corazón es muy especial.
+      </p>
+
+      <p>
+        Quiero que recuerdes que no tienes que ser perfecto para ser amado, que no tienes que tener todas las respuestas y que también mereces días bonitos, tranquilidad y felicidad.
+      </p>
+
+      <p>
+        Si alguna vez dudas de cuánto significas para mí, vuelve a este pequeño universo y recuerda que aquí hay una parte de mi corazón que siempre llevará tu nombre.
+      </p>
+
+      <p>
+        Te amo, mi amor. Nunca olvides que eres alguien muy especial para mí. 🩵
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- NUESTRO FUTURO -->
+<section id="futuro">
+  <div class="panel future-copy">
+
+    <h2 class="section-title">
+      Y si la vida nos permite cumplir nuestros sueños…
+    </h2>
+
+    <p>
+      Espero siempre seguir siendo esa mujer con la que te ilusiones al imaginar el futuro. Esa con la que sueñes casarte, formar un hogar, construir una familia y disfrutar de cada bendición que Dios tenga preparada para nosotros.
+    </p>
+
+    <p>
+      Espero que algún día podamos mirar atrás y sentir orgullo de todo lo que superamos para llegar hasta ese hogar que tanto soñamos. Que tengamos nuestras propias metas, nuestros pequeños logros, nuestras alegrías y la tranquilidad de saber que estamos construyendo algo juntos.
+    </p>
+
+    <p>
+      No quiero ser solamente parte de tu presente; quiero seguir siendo parte de tus planes, de tus sueños y de ese futuro que tantas veces hemos imaginado.
+    </p>
+
+    <p>
+      Ojalá que, cuando pienses en tu mañana, todavía me encuentres a mí, tomada de tu mano. 🩵
+    </p>
+
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <h2>TE AMO</h2>
+  <h3>MI AMOR 🩵</h3>
+
+  <p class="quote">
+    Esta historia todavía tiene muchos momentos bonitos por vivir.
+  </p>
+
+  <p class="signature">Con amor, tu Negrita.</p>
+
+  <a class="back-top" href="#inicio">Volver al comienzo ↑</a>
+</section>
+
+</main>
+
+<footer>
+  Hecho con mucho amor por Valentina 🩵
+</footer>
+
+<script>
+const inicio = new Date(2025, 1, 2, 0, 0, 0);
+
+function actualizarContador(){
+  const diferencia = Math.max(0, new Date() - inicio);
+
+  const segundo = 1000;
+  const minuto = segundo * 60;
+  const hora = minuto * 60;
+  const dia = hora * 24;
+
+  document.getElementById('days').textContent =
+    Math.floor(diferencia / dia);
+
+  document.getElementById('hours').textContent =
+    Math.floor((diferencia % dia) / hora);
+
+  document.getElementById('minutes').textContent =
+    Math.floor((diferencia % hora) / minuto);
+
+  document.getElementById('seconds').textContent =
+    Math.floor((diferencia % minuto) / segundo);
+}
+
+actualizarContador();
+setInterval(actualizarContador, 1000);
+
+function openLetter(){
+  document.getElementById('letter').classList.toggle('show');
+}
+
+function toggleBox(id){
+  document.getElementById(id).classList.toggle('show');
+}
+
+// Pétalos y destellos
+function crearPetalo(){
+  const petalo = document.createElement('div');
+
+  petalo.className = 'petal';
+  petalo.textContent = Math.random() > .5 ? '✧' : '❀';
+  petalo.style.left = Math.random() * 100 + 'vw';
+  petalo.style.fontSize = (12 + Math.random() * 13) + 'px';
+  petalo.style.animationDuration = (7 + Math.random() * 7) + 's';
+
+  document.body.appendChild(petalo);
+
+  setTimeout(() => petalo.remove(), 15000);
+}
+
+setInterval(crearPetalo, 1100);
+
+document.addEventListener('click', function(event){
+  const brillo = document.createElement('span');
+
+  brillo.className = 'spark';
+  brillo.textContent = '✦';
+  brillo.style.left = event.clientX + 'px';
+  brillo.style.top = event.clientY + 'px';
+
+  document.body.appendChild(brillo);
+
+  setTimeout(() => brillo.remove(), 850);
+});
+</script>
+
+</body>
+</html>
